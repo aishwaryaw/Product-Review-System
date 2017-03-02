@@ -1,0 +1,38 @@
+<head>
+<script type="text/javascript">
+function check()
+{
+
+var un=document.getElementById("usernm").value;
+var pwd=document.getElementById("pwd").value;
+var http=new XMLHttpRequest();
+
+http.open("POST","loginpro2.php?nm="+un+"&pwd="+pwd,true);
+http.send();
+
+http.onreadystatechange = function() {
+if (http.readyState == 4) 
+	{
+	var res=http.responseText;
+	alert(res);
+	if(res == "go on")
+	{
+	/*document.getElementById('a').innerHTML='<form action="addproductpro2.html" method="post">
+	<input type= "submit" value="addproduct"></form>';*/
+	document.getElementById('a').innerHTML='<a href="addproductpro2.html">addproduct</a>';
+	document.getElementById('ab').innerHTML='<a href="review.php">see  review</a>';
+	}	
+	}
+}
+}
+</script>
+</head>
+<body>
+<form>
+name:<input type="text" name="nm" id="usernm"><br>
+password:<input type="password" id="pwd" name="pwd"><br>
+<input type="button" value="submit" onclick="check()"><br>
+<div id= "a"></div>
+<div id= "ab"></div>
+</form>
+</body>
